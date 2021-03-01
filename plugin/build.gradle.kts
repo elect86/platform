@@ -1,5 +1,6 @@
 plugins {
     `java-platform`
+    `maven-publish`
 }
 
 group = "kx.platform"
