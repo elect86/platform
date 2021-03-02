@@ -1,12 +1,6 @@
-plugins {
-    `java-platform`
-    `maven-publish`
-}
-
-group = "kx.platform"
-version = "0.0.1"
 
 dependencies {
+
     constraints {
 
         api("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.30")
