@@ -11,6 +11,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/kx" />
             <option value="$PROJECT_DIR$/plugin" />
             <option value="$PROJECT_DIR$/source" />
             <option value="$PROJECT_DIR$/test" />

@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/platform.iml" filepath="$PROJECT_DIR$/.idea/platform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/platforms.buildSrc.main.iml" filepath="$PROJECT_DIR$/.idea/modules/platforms.buildSrc.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/platforms.buildSrc.test.iml" filepath="$PROJECT_DIR$/.idea/modules/platforms.buildSrc.test.iml" />
     </modules>
   </component>
 </project>
