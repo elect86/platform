@@ -5,7 +5,7 @@ subprojects {
     apply(plugin = "maven-publish")
 
     group = "kx.platform"
-    version = "0.0.4"
+    version = "0.0.7"
 
     // limited dsl support inside here
     fun publishing(configure: Action<PublishingExtension>) = extensions.configure("publishing", configure)
