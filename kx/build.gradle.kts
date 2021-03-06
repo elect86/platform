@@ -3,10 +3,10 @@ dependencies {
 
     constraints {
 
-        val kx = "com.github.kotlin.graphics"
+        val kx = "com.github.kotlin-graphics"
 
-//        api("$kx:kotlin-unsigned:0.9.0")
-//
-//        api("$kx:kool:3.2.9")
+        api("$kx:kotlin-unsigned:ff50c1dd")
+
+        api("$kx:kool:706a42d0")
     }
 }
