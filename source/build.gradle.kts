@@ -13,7 +13,10 @@ dependencies {
         val kx = "com.github.kotlin-graphics"
 
         api("$kx:kotlin-unsigned:ff50c1dd")
-
         api("$kx:kool:706a42d0")
+        api("$kx:glm:c70013f5")
+        api("$kx:gli:6e88ff65")
+        api("$kx:gln:2d5e74af")
+//        api("$kx:vkk:")
     }
 }
