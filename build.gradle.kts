@@ -1,4 +1,3 @@
-
 subprojects {
 
     apply(plugin = "java-platform")
@@ -14,6 +13,10 @@ subprojects {
         publications.create<MavenPublication>("maven") {
             from(components["javaPlatform"])
         }
-        repositories.maven("$rootDir/../mary")
+        repositories.maven {
+            name = "repsy"
+            url = uri("https://repo.repsy.io/mvn/elect/kx")
+            credentials(PasswordCredentials::class)
+        }
     }
 }
