@@ -1,13 +1,13 @@
 import java.io.ByteArrayOutputStream
 
 val gitDescribe: String by lazy {
-        val stdout = ByteArrayOutputStream()
-        rootProject.exec {
-            commandLine("git", "describe", "--tags")
-            standardOutput = stdout
-        }
-        stdout.toString().trim()
+    val stdout = ByteArrayOutputStream()
+    rootProject.exec {
+        commandLine("git", "describe", "--tags")
+        standardOutput = stdout
     }
+    stdout.toString().trim().replace("-g", "-")
+}
 
 
 subprojects {
