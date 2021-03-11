@@ -30,5 +30,4 @@ subprojects {
     }
 }
 
-
-//println(gitDescribe())
+println(gitDescribe())
