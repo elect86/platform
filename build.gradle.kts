@@ -48,8 +48,8 @@ tasks {
         doLast {
             rootProject.exec { commandLine("git", "add", ".") }
             var message = gitDescribe.substringBeforeLast('-')
-            var commits = message.substringAfterLast('-').toInt()
-            println(commits)
+            val commits = message.substringAfterLast('-').toInt() + 1
+            message = message.substringBeforeLast('-') + "-$commits"
             rootProject.exec { commandLine("git", "commit", "-m", message) }
             rootProject.exec { commandLine("git", "push") }
         }
