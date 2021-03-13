@@ -76,7 +76,7 @@ tasks {
                 commandLine("git", "add", ".")
             }
             val message = """
-                |bump ${project.name} up
+                |$project :arrow_up:
                 |snapshot $gitDescribe
             """.trimMargin()
             rootProject.exec {
