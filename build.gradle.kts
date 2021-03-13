@@ -75,12 +75,9 @@ tasks {
                 workingDir = maryDir
                 commandLine("git", "add", ".")
             }
-            var message = gitDescribe.substringBeforeLast('-')
-            val commits = message.substringAfterLast('-').toInt() + 1
-            message = message.substringBeforeLast('-') + "-$commits"
             rootProject.exec {
                 workingDir = maryDir
-                commandLine("git", "commit", "-m", message)
+                commandLine("git", "commit", "-m", gitDescribe.substringBeforeLast('-'))
             }
             rootProject.exec {
                 workingDir = maryDir
