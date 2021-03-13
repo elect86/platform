@@ -21,8 +21,8 @@ subprojects {
     apply(plugin = "maven-publish")
 
     group = "kotlin.graphics.platform"
-    //    version = "0.1.9"
-    version = gitDescribe
+    version = "0.2.8"
+    //    version = gitDescribe
 
     extensions.configure(PublishingExtension::class) {
         publications.create<MavenPublication>("maven") {
@@ -52,6 +52,27 @@ tasks {
             message = message.substringBeforeLast('-') + "-$commits"
             rootProject.exec { commandLine("git", "commit", "-m", message) }
             rootProject.exec { commandLine("git", "push") }
+        }
+    }
+    register("commit&pushMary") {
+        group = "kx"
+        doLast {
+            val maryDir = file("$rootDir/../mary")
+            rootProject.exec {
+                workingDir = maryDir
+                commandLine("git", "add", ".")
+            }
+            var message = gitDescribe.substringBeforeLast('-')
+            val commits = message.substringAfterLast('-').toInt() + 1
+            message = message.substringBeforeLast('-') + "-$commits"
+            rootProject.exec {
+                workingDir = maryDir
+                commandLine("git", "commit", "-m", message)
+            }
+            rootProject.exec {
+                workingDir = maryDir
+                commandLine("git", "push")
+            }
         }
     }
 }
