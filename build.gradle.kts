@@ -75,9 +75,13 @@ tasks {
                 workingDir = maryDir
                 commandLine("git", "add", ".")
             }
+            val message = """
+                |bump ${project.name} up
+                |snapshot $gitDescribe
+            """.trimMargin()
             rootProject.exec {
                 workingDir = maryDir
-                commandLine("git", "commit", "-m", gitDescribe.substringBeforeLast('-'))
+                commandLine("git", "commit", "-m", message)
             }
             rootProject.exec {
                 workingDir = maryDir
