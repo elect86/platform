@@ -63,8 +63,8 @@ tasks {
         dependsOn("commit&push")
         finalizedBy(":plugin:publish",
                     ":source:publish",
-                   ":test:publish",
-                    "commit&pushMary")
+                   ":test:publish"/*,
+                    "commit&pushMary"*/)
     }
     register("commit&pushMary") {
         group = "kx"
