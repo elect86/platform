@@ -5,14 +5,15 @@ plugins {
     //    id("com.google.cloud.artifactregistry.gradle-plugin") version "2.1.1"
 }
 
-val gitDescribe: String by lazy {
-    val stdout = ByteArrayOutputStream()
-    rootProject.exec {
-        commandLine("git", "describe", "--tags")
-        standardOutput = stdout
+val gitDescribe: String
+    get() {
+        val stdout = ByteArrayOutputStream()
+        rootProject.exec {
+            commandLine("git", "describe", "--tags")
+            standardOutput = stdout
+        }
+        return stdout.toString().trim().replace(Regex("-g([a-z0-9]+)$"), "-$1")
     }
-    stdout.toString().trim().replace(Regex("-g([a-z0-9]+)$"), "-$1")
-}
 
 
 subprojects {
@@ -22,7 +23,7 @@ subprojects {
 
     group = "kotlin.graphics.platform"
     version = "0.2.8"
-//    version = gitDescribe
+    //    version = gitDescribe
 
     extensions.configure(PublishingExtension::class) {
         publications.create<MavenPublication>("maven") {
@@ -63,7 +64,7 @@ tasks {
         dependsOn("commit&push")
         finalizedBy(":plugin:publish",
                     ":source:publish",
-                   ":test:publish"/*,
+                    ":test:publish"/*,
                     "commit&pushMary"*/)
     }
     register("commit&pushMary") {
