@@ -56,7 +56,7 @@ tasks {
         group = "kx"
         doLast {
             rootProject.exec { commandLine("git", "add", ".") }
-            rootProject.exec { commandLine("git", "commit", "-m", "\"up\"") }
+            rootProject.exec { commandLine("git", "commit", "-m", "up") }
 //            rootProject.exec { commandLine("git", "push") }
             //            rootProject.exec { commandLine("pwd") }
         }
