@@ -22,7 +22,7 @@ subprojects {
 
     group = "kotlin.graphics.platform"
     version = "0.2.8"
-    //    version = gitDescribe
+//    version = gitDescribe
 
     extensions.configure(PublishingExtension::class) {
         publications.create<MavenPublication>("maven") {
@@ -53,6 +53,18 @@ tasks {
             rootProject.exec { commandLine("git", "commit", "-m", message) }
             rootProject.exec { commandLine("git", "push") }
         }
+    }
+    register("publishSnapshot") {
+        group = "kx"
+        doLast {
+            subprojects { version = gitDescribe }
+            println("publish")
+        }
+        dependsOn("commit&push")
+        finalizedBy(":plugin:publish",
+                    ":source:publish",
+                   ":test:publish",
+                    "commit&pushMary")
     }
     register("commit&pushMary") {
         group = "kx"
