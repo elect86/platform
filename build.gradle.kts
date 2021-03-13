@@ -1,6 +1,7 @@
 import java.io.ByteArrayOutputStream
 
 plugins {
+    java
     //    id("com.google.cloud.artifactregistry.gradle-plugin") version "2.1.1"
 }
 
@@ -10,7 +11,7 @@ val gitDescribe: String by lazy {
         commandLine("git", "describe", "--tags")
         standardOutput = stdout
     }
-    stdout.toString().trim().replace("-g", "-")
+    stdout.toString().trim().replace(Regex("-g([a-z0-9]+)$"), "-$1")
 }
 
 
@@ -27,17 +28,17 @@ subprojects {
         publications.create<MavenPublication>("maven") {
             from(components["javaPlatform"])
         }
-        //        repositories.maven {
-        //            //            name = "scijava"
-        //            //            url = uri("https://maven.scijava.org/content/repositories/releases")
-        //            //            name = "repsy"
-        //            //            url = uri("https://repo.repsy.io/mvn/elect/kx")
-        //            //            name = "aws"
-        //            //            url = uri("https://kx-995066660206.d.codeartifact.eu-central-1.amazonaws.com/maven/mary/")
-        //            //            credentials(PasswordCredentials::class)
-        //            //            url = uri("artifactregistry://europe-west6-maven.pkg.dev/galvanized-case-306920/kx")
-        //        }
-        repositories.maven("$rootDir/../mary")
+        repositories.maven {
+            url = uri("$rootDir/../mary")
+            //            name = "scijava"
+            //            url = uri("https://maven.scijava.org/content/repositories/releases")
+            //            name = "repsy"
+            //            url = uri("https://repo.repsy.io/mvn/elect/kx")
+            //            name = "aws"
+            //            url = uri("https://kx-995066660206.d.codeartifact.eu-central-1.amazonaws.com/maven/mary/")
+            //            credentials(PasswordCredentials::class)
+            //            url = uri("artifactregistry://europe-west6-maven.pkg.dev/galvanized-case-306920/kx")
+        }
     }
 }
 
@@ -58,22 +59,17 @@ tasks {
             rootProject.exec { commandLine("git", "add", ".") }
             rootProject.exec { commandLine("git", "commit", "-m", "up") }
             rootProject.exec { commandLine("git", "push") }
-            //            rootProject.exec { commandLine("pwd") }
         }
     }
-    register("push") {
-        group = "kx"
-        //        project.exec {
-        //            commandLine("git ")
-        //        }
-    }
-    //    val publish by registering {
-    //        doLast { println("publish")}
-    //
+    //    register("push") {
+    //        group = "kx"
+    //        //        project.exec {
+    //        //            commandLine("git ")
+    //        //        }
     //    }
-    register("test") {
-        group = "kx"
-        doLast { println("test") }
-        dependsOn("publish")
-    }
+    //    register("test") {
+    //        group = "kx"
+    //        doLast { println("test") }
+    //        dependsOn("publish")
+    //    }
 }
