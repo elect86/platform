@@ -47,7 +47,8 @@ tasks {
         group = "kx"
         doLast {
             rootProject.exec { commandLine("git", "add", ".") }
-            rootProject.exec { commandLine("git", "commit", "-m", gitDescribe.substringBeforeLast("-")) }
+            var message = gitDescribe.substringBeforeLast('-')
+            rootProject.exec { commandLine("git", "commit", "-m", message) }
             rootProject.exec { commandLine("git", "push") }
         }
     }
