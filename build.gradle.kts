@@ -43,33 +43,12 @@ subprojects {
 }
 
 tasks {
-    //    val publish by registering {
-    //        group = "publishing"
-    //        doLast {
-    //            println("doLast")
-    //        }
-    //        finalizedBy("test")
-    //    }
-    //    val test by registering {
-    //        doLast { println("test")}
-    //    }
     register("commit&push") {
         group = "kx"
         doLast {
             rootProject.exec { commandLine("git", "add", ".") }
-            rootProject.exec { commandLine("git", "commit", "-m", "up") }
+            rootProject.exec { commandLine("git", "commit", "-m", gitDescribe) }
             rootProject.exec { commandLine("git", "push") }
         }
     }
-    //    register("push") {
-    //        group = "kx"
-    //        //        project.exec {
-    //        //            commandLine("git ")
-    //        //        }
-    //    }
-    //    register("test") {
-    //        group = "kx"
-    //        doLast { println("test") }
-    //        dependsOn("publish")
-    //    }
 }
