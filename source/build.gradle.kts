@@ -1,6 +1,6 @@
 
 // allow the definition of dependencies to other platforms like the Spring Boot BOM
-javaPlatform.allowDependencies()
+extensions.getByName<JavaPlatformExtension>("javaPlatform").allowDependencies()
 
 dependencies {
 
@@ -12,11 +12,11 @@ dependencies {
 
         val kx = "com.github.kotlin-graphics"
 
-        api("$kx:kotlin-unsigned:51d8dfea")
-        api("$kx:kool:95bcdc4d")
-        api("$kx:glm:8dae70c1")
-        api("$kx:gli:12cd3342")
-        api("$kx:gln:9eae85c8")
-        api("$kx:vkk:9d1cd859")
+        "api"("$kx:unsigned:3.2.9+22")
+        "api"("$kx:kool:0.9.0+18")
+        "api"("$kx:glm:8dae70c1")
+        "api"("$kx:gli:12cd3342")
+        "api"("$kx:gln:9eae85c8")
+        "api"("$kx:vkk:9d1cd859")
     }
 }

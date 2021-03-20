@@ -1,20 +1,15 @@
 import java.io.ByteArrayOutputStream
 
-plugins {
-    java
-    //    id("com.google.cloud.artifactregistry.gradle-plugin") version "2.1.1"
-}
+//plugins {
+//    java
+//    //    id("com.google.cloud.artifactregistry.gradle-plugin") version "2.1.1"
+//}
 
 val gitDescribe: String
-    get() {
-        val stdout = ByteArrayOutputStream()
-        rootProject.exec {
-            commandLine("git", "describe", "--tags")
-            standardOutput = stdout
-        }
-        return stdout.toString().trim().replace(Regex("-g([a-z0-9]+)$"), "-$1")
-    }
+    get() = ByteArrayOutputStream().also { exec { commandLine("git", "describe", "--tags"); standardOutput = it; } }
+        .toString().trim().replace(Regex("-g([a-z0-9]+)$"), "-$1")
 
+version = "0.2.8+22" // for ::bump
 
 subprojects {
 
@@ -22,15 +17,14 @@ subprojects {
     apply(plugin = "maven-publish")
 
     group = "kotlin.graphics.platform"
-    version = "0.2.8"
-    //    version = gitDescribe
+    version = rootProject.version
 
     extensions.configure(PublishingExtension::class) {
         publications.create<MavenPublication>("maven") {
             from(components["javaPlatform"])
         }
         repositories.maven {
-            url = uri("$rootDir/../mary")
+            url = uri("../mary")
             //            name = "scijava"
             //            url = uri("https://maven.scijava.org/content/repositories/releases")
             //            name = "repsy"
@@ -44,34 +38,27 @@ subprojects {
 }
 
 tasks {
-    register("commit&push") {
-        group = "kx"
+    register("1)bump,commit,push") {
+        group = "kx-dev"
         doLast {
-            rootProject.exec { commandLine("git", "add", ".") }
+            bump()
+            exec { commandLine("git", "add", ".") }
             var message = gitDescribe.substringBeforeLast('-')
             val commits = message.substringAfterLast('-').toInt() + 1
             message = message.substringBeforeLast('-') + "-$commits"
-            rootProject.exec { commandLine("git", "commit", "-m", message) }
-            rootProject.exec { commandLine("git", "push") }
+            exec { commandLine("git", "commit", "-m", message) }
+            exec { commandLine("git", "push") }
         }
     }
-    register("publishSnapshot") {
-        group = "kx"
-        doLast {
-            subprojects { version = gitDescribe }
-            println("publish")
-        }
-        dependsOn("commit&push")
-        finalizedBy(":plugin:publish",
-                    ":source:publish",
-                    ":test:publish",
-                    "commit&pushMary")
+    register("2)publish") {
+        group = "kx-dev"
+        finalizedBy(getTasksByName("publish", true))
     }
-    register("commit&pushMary") {
-        group = "kx"
+    register("3)[mary]commit,push") {
+        group = "kx-dev"
         doLast {
-            val maryDir = file("$rootDir/../mary")
-            rootProject.exec {
+            val maryDir = file("../mary")
+            exec {
                 workingDir = maryDir
                 commandLine("git", "add", ".")
             }
@@ -79,14 +66,27 @@ tasks {
                 |$project :arrow_up:
                 |snapshot $gitDescribe
             """.trimMargin()
-            rootProject.exec {
+            exec {
                 workingDir = maryDir
                 commandLine("git", "commit", "-m", message)
             }
-            rootProject.exec {
+            exec {
                 workingDir = maryDir
                 commandLine("git", "push")
             }
         }
     }
+}
+
+fun bump() {
+    val text = buildFile.readText()
+    val version = version.toString()
+    val plus = version.indexOf('+')
+    buildFile.writeText(text.replace(version, when {
+        plus != -1 -> {
+            val (tag, delta) = version.split('+')
+            "$tag+%02d".format(delta.toInt() + 1)
+        }
+        else -> "$version+01"
+    }))
 }
