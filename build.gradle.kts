@@ -9,7 +9,7 @@ val gitDescribe: String
     get() = ByteArrayOutputStream().also { exec { commandLine("git", "describe", "--tags"); standardOutput = it; } }
         .toString().trim().replace(Regex("-g([a-z0-9]+)$"), "-$1")
 
-version = "0.2.8+23" // for ::bump
+version = "0.2.8+24" // for ::bump
 
 subprojects {
 
@@ -24,7 +24,7 @@ subprojects {
             from(components["javaPlatform"])
         }
         repositories.maven {
-            url = uri("../mary")
+            url = uri("$rootDir/../mary")
             //            name = "scijava"
             //            url = uri("https://maven.scijava.org/content/repositories/releases")
             //            name = "repsy"
