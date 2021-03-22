@@ -11,9 +11,8 @@ dependencies {
 //        api(platform(":kx"))
 
         for((art, vers) in mapOf(
-            "unsigned" to "3.2.9+23",
-            "kool" to "0.9.0+20"
-             ))
+            "unsigned" to "3.2.9+24",
+            "kool" to "0.9.0+20"))
                  api("kotlin.graphics:$art:$vers")
 //
 //        api("$kx:unsigned:")
