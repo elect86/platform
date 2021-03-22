@@ -9,7 +9,7 @@ val gitDescribe: String
     get() = ByteArrayOutputStream().also { exec { commandLine("git", "describe", "--tags"); standardOutput = it; } }
         .toString().trim().replace(Regex("-g([a-z0-9]+)$"), "-$1")
 
-version = "0.2.8+27" // for ::bump
+version = "0.2.8+28" // for ::bump
 
 subprojects {
 
@@ -22,6 +22,7 @@ subprojects {
     extensions.configure(PublishingExtension::class) {
         publications.create<MavenPublication>("maven") {
             from(components["javaPlatform"])
+            suppressPomMetadataWarningsFor("apiElements")
         }
         repositories.maven {
             url = uri("$rootDir/../mary")
