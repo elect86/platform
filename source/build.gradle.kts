@@ -12,7 +12,7 @@ dependencies {
         for ((art, vers) in mapOf(
             "unsigned" to "3.2.9+24",
             "kool" to "0.9.0+20",
-            "glm" to "0.9.9.1-3+02"
+            "glm" to "0.9.9.1-3+20"
                                  ))
             api("kotlin.graphics:$art:$vers")
         //
