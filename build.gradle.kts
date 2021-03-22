@@ -9,7 +9,7 @@ val gitDescribe: String
     get() = ByteArrayOutputStream().also { exec { commandLine("git", "describe", "--tags"); standardOutput = it; } }
         .toString().trim().replace(Regex("-g([a-z0-9]+)$"), "-$1")
 
-version = "0.2.8+34" // for ::bump
+version = "0.2.8+35" // for ::bump
 
 subprojects {
 
