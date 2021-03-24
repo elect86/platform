@@ -14,7 +14,7 @@ dependencies {
             "kool" to "0.9.0+22",
             "glm" to "0.9.9.1-3+21",
             "gli" to "0.8.3.0-16+21",
-            "gln" to "0.5.2+15",
+            "gln" to "0.5.2+21",
             "vkk" to "0.3.2+33",
                                  ))
             api("kotlin.graphics:$art:$vers")
