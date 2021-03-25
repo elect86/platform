@@ -4,7 +4,7 @@ plugins {
 //    id("com.google.cloud.artifactregistry.gradle-plugin") version "2.1.1"
 }
 
-version = "0.2.8+42" // for ::bump
+version = "0.2.8+43" // for ::bump
 
 subprojects {
 

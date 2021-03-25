@@ -10,12 +10,12 @@ dependencies {
         //        api(platform(":kx"))
 
         for ((art, vers) in mapOf(
-            "unsigned" to "3.2.9+30",
-            "kool" to "0.9.0+22",
-            "glm" to "0.9.9.1-3+21",
-            "gli" to "0.8.3.0-16+21",
-            "gln" to "0.5.2+21",
-            "vkk" to "0.3.2+35",
+            "unsigned" to "3.2.9+31",
+            "kool" to "0.9.0+23",
+            "glm" to "0.9.9.1-3+22",
+            "gli" to "0.8.3.0-16+22",
+            "gln" to "0.5.2+22",
+            "vkk" to "0.3.2+36",
                                  ))
             api("kotlin.graphics:$art:$vers")
         //
