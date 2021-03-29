@@ -16,6 +16,7 @@ dependencies {
             "gli" to "0.8.3.0-16+22",
             "gln" to "0.5.2+22",
             "vkk" to "0.3.2+36",
+            "uno" to "0.7.9+35",
                                  ))
             api("kotlin.graphics:$art:$vers")
         //
