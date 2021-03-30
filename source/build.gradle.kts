@@ -9,6 +9,7 @@ dependencies {
         //        api("org.apache.juneau:juneau-marshall:8.2.0")
         //        api(platform(":kx"))
 
+        val uno = "0.7.9+35"
         for ((art, vers) in mapOf(
             "unsigned" to "3.2.9+31",
             "kool" to "0.9.0+23",
@@ -16,7 +17,10 @@ dependencies {
             "gli" to "0.8.3.0-16+22",
             "gln" to "0.5.2+22",
             "vkk" to "0.3.2+36",
-            "uno" to "0.7.9+35",
+            "uno" to uno,
+            "uno-awt" to uno,
+            "uno-core" to uno,
+            "uno-vk" to uno,
                                  ))
             api("kotlin.graphics:$art:$vers")
         //
