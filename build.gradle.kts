@@ -1,34 +1,47 @@
+import magik.MagikExtension
+import magik.github
 
 plugins {
     id("kx.snapshot") version "0.0.5"
-//    id("com.google.cloud.artifactregistry.gradle-plugin") version "2.1.1"
+    //    id("com.google.cloud.artifactregistry.gradle-plugin") version "2.1.1"
+    id("elect86.magik") version "0.0.4" apply false
 }
 
 version = "0.2.8+46" // for ::bump
 
 subprojects {
 
+    val workaround = name.startsWith("platform-")
+    //    println("$this, $workaround")
+    //    if (workaround)
+    //        apply(plugin = "org.gradle.kotlin.kotlin-dsl")
+    //    else
     apply(plugin = "java-platform")
     apply(plugin = "maven-publish")
+    apply(plugin = "elect86.magik")
 
     group = "kotlin.graphics.platform"
     version = rootProject.version
 
+    extensions.configure(MagikExtension::class) {
+        gitOnPath.set(false)
+        dryRun.set(true)
+    }
+
     extensions.configure(PublishingExtension::class) {
+        ////        if (workaround)
         publications.create<MavenPublication>("maven") {
             from(components["javaPlatform"])
             suppressPomMetadataWarningsFor("apiElements")
         }
-        repositories.maven {
-            url = uri("$rootDir/../mary")
-            //            name = "scijava"
-            //            url = uri("https://maven.scijava.org/content/repositories/releases")
-            //            name = "repsy"
-            //            url = uri("https://repo.repsy.io/mvn/elect/kx")
-            //            name = "aws"
-            //            url = uri("https://kx-995066660206.d.codeartifact.eu-central-1.amazonaws.com/maven/mary/")
-            //            credentials(PasswordCredentials::class)
-            //            url = uri("artifactregistry://europe-west6-maven.pkg.dev/galvanized-case-306920/kx")
+        //        repositories.maven {
+        //            name = "prova"
+        //            //            url = uri("$rootDir/../mary")
+        //            url = uri("$rootDir/repo")
+        //        }
+        repositories.github {
+            domain = ""
+            url = uri(rootDir.resolve("repo"))
         }
     }
 }
