@@ -4,12 +4,26 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT">
+            <builds>
+              <build path="$PROJECT_DIR$/../magik" name="magik">
+                <projects>
+                  <project path="$PROJECT_DIR$/../magik" />
+                  <project path="$PROJECT_DIR$/../magik/plugin" />
+                </projects>
+              </build>
+            </builds>
+          </compositeBuild>
+        </compositeConfiguration>
         <option name="delegatedBuild" value="true" />
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
+            <option value="$PROJECT_DIR$/../magik" />
+            <option value="$PROJECT_DIR$/../magik/plugin" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/plugin" />
             <option value="$PROJECT_DIR$/source" />
