@@ -1,15 +1,13 @@
-import magik.SoftwareComponent.javaPlatform
-import magik.alsoSnapshot
 import magik.github
 
 plugins {
-//    id("kx.snapshot") version "0.0.5"
-//    id("com.google.cloud.artifactregistry.gradle-plugin") version "2.1.1"
+    //    id("kx.snapshot") version "0.0.5"
+    //    id("com.google.cloud.artifactregistry.gradle-plugin") version "2.1.1"
 
     id("elect86.magik") version "0.0.8" apply false
 }
 
-version = "0.2.9" // for magik
+version = "0.3.0" // for magik
 
 subprojects {
 
@@ -21,23 +19,25 @@ subprojects {
     version = rootProject.version
 
     extensions.configure<PublishingExtension> {
+        fun MavenPublication.addLockfileForSource() {
+            if (this@subprojects.name == "source") {
+                val lockfile = file("${this@subprojects.projectDir}/kxLockfile.txt")
+                artifact(lockfile).classifier = "lockfile"
+            }
+        }
         publications.create<MavenPublication>("maven") {
+            addLockfileForSource()
             from(components["javaPlatform"])
             suppressPomMetadataWarningsFor("apiElements")
-        }.alsoSnapshot(component = javaPlatform)
-//        repositories.maven {
-//            url = uri("$rootDir/../mary")
-//            //            name = "scijava"
-//            //            url = uri("https://maven.scijava.org/content/repositories/releases")
-//            //            name = "repsy"
-//            //            url = uri("https://repo.repsy.io/mvn/elect/kx")
-//            //            name = "aws"
-//            //            url = uri("https://kx-995066660206.d.codeartifact.eu-central-1.amazonaws.com/maven/mary/")
-//            //            credentials(PasswordCredentials::class)
-//            //            url = uri("artifactregistry://europe-west6-maven.pkg.dev/galvanized-case-306920/kx")
-//        }
-        repositories.github {
-            domain = "kotlin-graphics/mary"
+        }.github {
+            addSnapshotPublication {
+                addLockfileForSource()
+            }
+        }
+        repositories {
+            github {
+                domain = "kotlin-graphics/mary"
+            }
         }
     }
 }
