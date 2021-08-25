@@ -1,19 +1,18 @@
 import magik.github
 
 plugins {
-    //    id("kx.snapshot") version "0.0.5"
-    //    id("com.google.cloud.artifactregistry.gradle-plugin") version "2.1.1"
-
     id("elect86.magik") version "0.0.8" apply false
 }
 
-version = "0.3.0" // for magik
+version = "0.3.1" // for magik
 
 subprojects {
 
     apply(plugin = "java-platform")
     apply(plugin = "maven-publish")
     apply(plugin = "elect86.magik")
+
+//    extensions.configure<magik.MagikExtension> { dryRun.set(true) }
 
     group = "kotlin.graphics.platform"
     version = rootProject.version
