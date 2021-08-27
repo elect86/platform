@@ -11,6 +11,6 @@ dependencies {
 
         api("com.github.johnrengelman.shadow:com.github.johnrengelman.shadow.gradle.plugin:7.0.0")
 
-        api("elect86.magik:elect86.magik.gradle.plugin:0.1.2")
+        api("elect86.magik:elect86.magik.gradle.plugin:0.1.3")
     }
 }
