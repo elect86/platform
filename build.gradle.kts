@@ -1,10 +1,10 @@
 import magik.github
 
 plugins {
-    id("elect86.magik") version "0.0.8" apply false
+    id("elect86.magik") version "0.1.1" apply false
 }
 
-version = "0.3.1" // for magik
+version = "0.3.2"
 
 subprojects {
 
