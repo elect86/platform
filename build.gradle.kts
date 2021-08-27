@@ -1,7 +1,7 @@
 import magik.github
 
 plugins {
-    id("elect86.magik") version "0.1.2" apply false
+    id("elect86.magik") version "0.1.3" apply false
 }
 
 version = "0.3.3"
