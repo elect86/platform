@@ -14,4 +14,4 @@ include("source")
 include("test")
 include("plugin")
 
-//includeBuild("../magik")
+includeBuild("../magik")
