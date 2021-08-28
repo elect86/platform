@@ -4,7 +4,7 @@ plugins {
     id("elect86.magik") version "0.1.3" apply false
 }
 
-version = "0.3.3+6"
+version = "0.3.3+7"
 
 subprojects {
 
