@@ -2,10 +2,11 @@ import magik.createGithubPublication
 import magik.github
 
 plugins {
-    id("elect86.magik") version "0.1.4" apply false
+    val magikVersion = "0.1.4"
+    id("elect86.magik") version magikVersion apply false
 }
 
-version = "0.3.3+12"
+version = "0.3.3+13"
 
 tasks {
     withType<JavaCompile> {
