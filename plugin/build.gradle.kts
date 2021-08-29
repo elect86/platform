@@ -11,7 +11,7 @@ dependencies {
 
         api("com.github.johnrengelman.shadow:com.github.johnrengelman.shadow.gradle.plugin:7.0.0")
 
-        val magikVersion = "0.1.4"
+        val magikVersion = "0.1.5"
         api("elect86.magik:elect86.magik.gradle.plugin:$magikVersion")
     }
 }
