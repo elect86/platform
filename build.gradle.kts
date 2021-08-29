@@ -2,11 +2,11 @@ import magik.createGithubPublication
 import magik.github
 
 plugins {
-    val magikVersion = "0.1.4"
+    val magikVersion = "0.1.5"
     id("elect86.magik") version magikVersion apply false
 }
 
-version = "0.3.3+13"
+version = "0.3.3+14"
 
 tasks {
     withType<JavaCompile> {
@@ -31,7 +31,7 @@ subprojects {
     version = rootProject.version
 
     extensions.configure<PublishingExtension> {
-        publications.createGithubPublication(addSnapshot = true) {
+        publications.createGithubPublication {
             if (this@subprojects.name == "source") {
                 val lockfile = file("${this@subprojects.projectDir}/kxLockfile.txt")
                 artifact(lockfile).classifier = "lockfile"
