@@ -6,7 +6,7 @@ plugins {
     id("elect86.magik") version magikVersion apply false
 }
 
-version = "0.3.3+15"
+version = "0.3.3+16"
 
 tasks {
     withType<JavaCompile> {
