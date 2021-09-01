@@ -1,3 +1,7 @@
+plugins {
+    id("platform")
+}
+
 // allow the definition of dependencies to other platforms like the Spring Boot BOM
 extensions.getByName<JavaPlatformExtension>("javaPlatform").allowDependencies()
 
@@ -5,8 +9,7 @@ dependencies {
 
     api(platform("org.lwjgl:lwjgl-bom:3.2.3"))
 
-    constraints {
-        println("platform:source dependencies { constraints }")
+//    constraints {
 //        //        api("org.apache.juneau:juneau-marshall:8.2.0")
 //        //        api(platform(":kx"))
 //
@@ -31,5 +34,12 @@ dependencies {
 //        //        api("$kx:gli:12cd3342")
 //        //        api("$kx:gln:9eae85c8")
 //        //        api("$kx:vkk:9d1cd859")
+//    }
+}
+
+publishing {
+    publications.named<MavenPublication>("maven") {
+        val lockfile = file("$projectDir/kxLockfile.txt")
+        artifact(lockfile).classifier = "lockfile"
     }
 }
