@@ -1,8 +1,15 @@
 plugins {
-    kotlin("jvm")
+    kotlin("jvm") //version "1.5.30"
     `kotlin-dsl`
 }
 
 repositories {
     mavenCentral()
+    gradlePluginPortal()
+}
+
+dependencies {
+
+    val magikVersion = "0.1.5"
+    implementation("elect86.magik:elect86.magik.gradle.plugin:$magikVersion")
 }
