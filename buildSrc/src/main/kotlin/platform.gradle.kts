@@ -10,7 +10,7 @@ plugins {
 }
 
 version = rootProject.version
-group = rootProject.gradle
+group = rootProject.group
 
 tasks {
     withType<JavaCompile> {

@@ -10,6 +10,6 @@ repositories {
 
 dependencies {
 
-    val magikVersion = "0.1.5"
+    val magikVersion = "0.1.7"
     implementation("elect86.magik:elect86.magik.gradle.plugin:$magikVersion")
 }

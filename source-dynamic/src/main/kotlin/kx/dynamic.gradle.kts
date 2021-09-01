@@ -8,7 +8,7 @@ plugins {
 }
 
 version = rootProject.version
-group = rootProject.gradle
+group = rootProject.group
 
 tasks {
     withType<JavaCompile> {
@@ -19,7 +19,7 @@ tasks {
 
 dependencies {
     constraints {
-        println("[platform-dynamic] applying constraints, $version")
+        println("[platform-dynamic] applying constraints, $group:$version")
     }
 }
 

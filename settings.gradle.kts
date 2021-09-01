@@ -5,6 +5,8 @@ pluginManagement {
         gradlePluginPortal()
         //        maven("https://repo.repsy.io/mvn/elect/kx/")
         maven("https://raw.githubusercontent.com/kotlin-graphics/mary/master")
+
+//        includeBuild("../magik")
     }
 }
 
@@ -19,5 +21,3 @@ include("source")
 include("test")
 include("plugin")
 include("source-dynamic")
-
-//includeBuild("../magik")
