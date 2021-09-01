@@ -7,6 +7,9 @@ plugins {
     `maven-publish`
 }
 
+version = rootProject.version
+group = rootProject.gradle
+
 tasks {
     withType<JavaCompile> {
         targetCompatibility = "1.8"
