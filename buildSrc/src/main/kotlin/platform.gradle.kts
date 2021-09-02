@@ -12,13 +12,6 @@ plugins {
 version = rootProject.version
 group = rootProject.group
 
-tasks {
-    withType<JavaCompile> {
-        targetCompatibility = "1.8"
-        sourceCompatibility = "1.8"
-    }
-}
-
 publishing {
     publications.createGithubPublication {
         from(components["javaPlatform"])
