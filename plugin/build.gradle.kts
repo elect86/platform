@@ -18,5 +18,8 @@ dependencies {
 
         val magikVersion = "0.1.9"
         api("elect86.magik:elect86.magik.gradle.plugin:$magikVersion")
+
+        val sourceDynamicVersion = rootProject.version
+        api("kx.source-dynamic:kx.source-dynamic.gradle.plugin:$sourceDynamicVersion")
     }
 }
