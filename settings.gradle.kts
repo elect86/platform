@@ -14,11 +14,9 @@ rootProject.name = "platforms"
 
 gradle.rootProject {
     group = "kotlin.graphics.platform"
-    version = "0.3.3+18"
+    version = "0.3.3+19"
 }
 
 include("source")
 include("test")
 include("plugin")
-// TODO remove
-include("source-dynamic")

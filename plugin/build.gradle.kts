@@ -7,8 +7,7 @@ dependencies {
 
     constraints {
 
-        val kotlinVersion = "1.5.30"
-        api("org.jetbrains.kotlin.jvm:org.jetbrains.kotlin.jvm.gradle.plugin:$kotlinVersion")
+        api("org.jetbrains.kotlin.jvm:org.jetbrains.kotlin.jvm.gradle.plugin:$embeddedKotlinVersion")
 //        api("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.31")
 
         api("org.jetbrains.dokka:dokka-gradle-plugin:1.5.0")
@@ -19,7 +18,6 @@ dependencies {
         val magikVersion = "0.1.9"
         api("elect86.magik:elect86.magik.gradle.plugin:$magikVersion")
 
-        val sourceDynamicVersion = rootProject.version
-        api("kx.source-dynamic:kx.source-dynamic.gradle.plugin:$sourceDynamicVersion")
+        api("kx.source-dynamic:kx.source-dynamic.gradle.plugin:${rootProject.version}")
     }
 }
