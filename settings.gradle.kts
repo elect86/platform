@@ -20,4 +20,5 @@ gradle.rootProject {
 include("source")
 include("test")
 include("plugin")
+// TODO remove
 include("source-dynamic")
