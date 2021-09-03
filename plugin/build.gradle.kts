@@ -1,4 +1,4 @@
-import org.gradle.kotlin.dsl.support.expectedKotlinDslPluginsVersion
+//import org.gradle.kotlin.dsl.support.expectedKotlinDslPluginsVersion
 
 plugins {
     id("platform")
@@ -8,7 +8,7 @@ dependencies {
 
     constraints {
 
-        api("org.gradle.kotlin:gradle-kotlin-dsl-plugins:$expectedKotlinDslPluginsVersion")
+//        api("org.gradle.kotlin:gradle-kotlin-dsl-plugins:$expectedKotlinDslPluginsVersion")
         api("org.jetbrains.kotlin:kotlin-gradle-plugin:$embeddedKotlinVersion")
 //        api("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.31")
 
