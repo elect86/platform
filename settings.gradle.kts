@@ -14,7 +14,7 @@ rootProject.name = "platforms"
 
 gradle.rootProject {
     group = "kotlin.graphics"
-    version = "0.3.3+23"
+    version = "0.3.3+24"
 }
 
 include("source")
