@@ -13,8 +13,8 @@ pluginManagement {
 rootProject.name = "platforms"
 
 gradle.rootProject {
-    group = "kotlin.graphics.platform"
-    version = "0.3.3+22"
+    group = "kotlin.graphics"
+    version = "0.3.3+23"
 }
 
 include("source")

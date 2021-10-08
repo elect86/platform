@@ -14,6 +14,7 @@ group = rootProject.group
 
 publishing {
     publications.createGithubPublication {
+        artifactId = "platform-$artifactId"
         from(components["javaPlatform"])
         suppressPomMetadataWarningsFor("apiElements")
     }
