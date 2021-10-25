@@ -1,7 +1,7 @@
 //import org.gradle.kotlin.dsl.support.expectedKotlinDslPluginsVersion
 
 plugins {
-    id("platform")
+    id("my-platform")
 }
 
 dependencies {
@@ -15,9 +15,9 @@ dependencies {
         api("org.jetbrains.dokka:dokka-gradle-plugin:1.5.0")
 //        api("org.jetbrains.dokka:dokka-core:1.4.20")
 
-        api("com.github.johnrengelman.shadow:com.github.johnrengelman.shadow.gradle.plugin:7.0.0")
+//        api("com.github.johnrengelman.shadow:com.github.johnrengelman.shadow.gradle.plugin:7.0.0")
 
-        val magikVersion = "0.2.3"
+        val magikVersion = "0.2.4"
         api("elect86.magik:elect86.magik.gradle.plugin:$magikVersion")
 
         api("kx.source-dynamic:kx.source-dynamic.gradle.plugin:${rootProject.version}")
